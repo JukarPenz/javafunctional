@@ -1,0 +1,50 @@
+boolean solution(int[] s) {
+
+    if(s.length<=2)
+        return true;
+    int cr=0;
+    for (int i = 0; i < s.length; i++) {
+        if(s[i-1]>=s[i]){
+            if(++cr>1)
+                return false;
+            if(s[i-2] >= s[i-1] && s[i-1]>=s[i+1])
+                return true;
+        }
+    }
+
+    int last=s[0];
+    // int prevLast=s[0];
+    int skip=0;
+    for (int i = 1; false && i < s.length; i++) {
+        if(s[i]<=last){
+            skip++;
+        }
+        else{
+            last=s[i];
+        }
+        if(skip>1){
+            return false;
+        }
+
+    }
+
+    int left=0;
+    int right=s.length-1;
+    int remove=0;
+    while(false && left<right){
+        System.out.println(s[left]+"-"+s[right]);
+        if(!(s[left]<s[left+1])){
+            remove++;
+        }
+        if(!(s[right]>s[right-1])){
+            remove++;
+        }
+        if(remove>1){
+            return false;
+        }
+        left++;
+        right--;
+    }
+
+    return true;
+}
